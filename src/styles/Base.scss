@@ -1,0 +1,15 @@
+.App {
+  color: $darkGreen;
+}
+
+.content {
+  margin: 40px auto;
+  width: 640px;
+  padding: 40px 20px;
+  background-color: $lightGreen;
+
+  &-wide {
+      width: 840px;
+      background-color: white;
+  }
+}

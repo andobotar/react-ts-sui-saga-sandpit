@@ -1,0 +1,22 @@
+@import '../../styles/Colors.scss';
+
+.navbar {
+    background-color: $lightGreen;
+    color: #333;
+    line-height: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.navItem {
+    margin: 8px 32px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: rgb(66, 65, 65);
+
+    &:hover {
+        color: black;
+    }
+}
