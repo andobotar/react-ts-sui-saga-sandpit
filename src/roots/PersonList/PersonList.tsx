@@ -1,34 +1,13 @@
 import React, { useState } from 'react';
 import { Table, Pagination, Form, Select } from 'semantic-ui-react';
+import { useSelector } from 'react-redux';
 
+import { Person } from '../../models/person';
 import classes from './PersonList.module.scss';
 
 export default function PersonList() {
-    const [people] = useState([
-        { name: '1-Luke', email: 'luke@rebellion.org', planet: 'Alderaan' },
-        { name: '2-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-        { name: '3-Luke', email: 'luke@rebellion.org', planet: 'Alderaan' },
-        { name: '4-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-        { name: '5-Luke', email: 'luke@rebellion.org', planet: 'Alderaan' },
-        { name: '6-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-        { name: '7-Luke', email: 'luke@rebellion.org', planet: 'Alderaan' },
-        { name: '8-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-        { name: '9-Luke', email: 'luke@rebellion.org', planet: 'Alderaan' },
-        { name: '10-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-        { name: '11-Luke', email: 'luke@rebellion.org', planet: 'Alderaan' },
-        { name: '12-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-        { name: '13-Luke', email: 'luke@rebellion.org', planet: 'Alderaan' },
-        { name: '14-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-        { name: '15-Luke', email: 'luke@rebellion.org', planet: 'Alderaan' },
-        { name: '16-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-        { name: '17-Luke', email: 'luke@rebellion.org', planet: 'Alderaan' },
-        { name: '18-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-        { name: '19-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-        { name: '20-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-        { name: '21-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-        { name: '22-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-        { name: '23-Vader', email: 'lord@empire.hu', planet: 'Dagobah' },
-    ]);
+    
+    const people = useSelector((state: {people: Array<Person>}) => state.people); // get 'people' from the redux store
     const [numRows, setNumRows] = useState(5);
     const [paginationIndex, setPaginationIndex] = useState(1);
     const [displayedPeople, setDisplayedPeople] = useState(people.slice(0, numRows));
@@ -57,7 +36,7 @@ export default function PersonList() {
 
     return (
         <div className={'content content-wide'}>
-            <Table celle>
+            <Table>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Name</Table.HeaderCell>
