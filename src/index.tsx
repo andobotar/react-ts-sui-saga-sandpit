@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 
 import { BrowserRouter } from 'react-router-dom';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { personListReducer } from './store/reducers/personListReducer';
+import createSagaMiddleware from 'redux-saga';
+import { rootSaga } from './store/sagas/fetchPlanetName';
 
 import 'semantic-ui-css/semantic.min.css';
 
@@ -13,7 +15,13 @@ import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(personListReducer);
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware();
+
+// mount it on the Store
+const store = createStore(personListReducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(rootSaga);
 
 const app = (
     <Provider store={store}>
