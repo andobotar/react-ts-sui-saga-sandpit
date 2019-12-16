@@ -5,6 +5,7 @@ import './App.scss';
 import PersonForm from './roots/PersonForm/PersonForm';
 import PersonList from './roots/PersonList/PersonList';
 import Navbar from './components/Navbar/Navbar';
+import UIElements from './roots/UIElements/UIElements';
 
 const App: React.FC = () => {
     return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
             <Switch>
                 <Route path="/form" component={PersonForm} />
                 <Route path="/list" component={PersonList} />
+                <Route path="/stuff" component={UIElements} />
             </Switch>
         </div>
     );

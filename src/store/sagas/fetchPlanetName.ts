@@ -1,4 +1,4 @@
-import { put, all, takeLeading } from 'redux-saga/effects';
+import { put, all, call, takeLeading } from 'redux-saga/effects';
 import axios from 'axios';
 
 import * as actionTypes from '../actions/actions';
@@ -23,5 +23,5 @@ export function* watchFetchPlanetName() {
 
 // root
 export function* rootSaga() {
-    yield all([watchFetchPlanetName()])
+    yield all([call(watchFetchPlanetName)])
 }

@@ -16,6 +16,11 @@ export default function Navbar() {
                     Person List
                 </Link>
             </div>
+            <div className={classes.navItem}>
+                <Link className={classes.navLink} to="/stuff">
+                    UI Elements
+                </Link>
+            </div>
         </nav>
     );
 }

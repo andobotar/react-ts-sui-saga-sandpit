@@ -8,16 +8,17 @@ import classes from './PersonList.module.scss';
 export default function PersonList() {
     
     const people = useSelector((state: {people: Array<Person>}) => state.people); // get 'people' from the redux store
-    const [numRows, setNumRows] = useState(5);
-    const [paginationIndex, setPaginationIndex] = useState(1);
-    const [displayedPeople, setDisplayedPeople] = useState(people.slice(0, numRows));
+
+    const [numRows, setNumRows] = useState<number>(5);
+    const [paginationIndex, setPaginationIndex] = useState<number>(1);
+    const [displayedPeople, setDisplayedPeople] = useState<Array<Person>>(people.slice(0, numRows));
 
     const handlePaginationChange = (e: any, f: any) => {
         setDisplayedPeople(filterPeople(f.activePage, numRows));
         setPaginationIndex(f.activePage);
     };
 
-    const filterPeople = (index: number, numRows: number) => {
+    const filterPeople = (index: number, numRows: number): Array<Person> => {
         const from = numRows * (index - 1);
         const to = numRows * index;
         return people.slice(from, to);
