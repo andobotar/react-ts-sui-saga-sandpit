@@ -11,7 +11,6 @@ const initialState: {people: Array<Person>} = {
 export const personListReducer = (state: {people: Array<Person>} = initialState, action: {type: string, payload: Person}): any => {
     switch(action.type) {
         case actionTypes.ADD_PERSON:
-            // console.log('adding item', action.payload)
             return {...state, people: state.people.concat(action.payload)}
         default:
             return state

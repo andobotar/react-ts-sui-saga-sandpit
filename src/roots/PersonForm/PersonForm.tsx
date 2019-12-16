@@ -14,7 +14,7 @@ export default function PersonForm() {
     
     const handleSubmit = (values: Person, { resetForm }: {resetForm: any}) => {
         dispatch(addPersonAction(values))
-        // resetForm()
+        resetForm()
     }
 
 
