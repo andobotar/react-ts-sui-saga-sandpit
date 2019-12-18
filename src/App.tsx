@@ -1,11 +1,11 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import './App.scss';
-import PersonForm from './roots/PersonForm/PersonForm';
-import PersonList from './roots/PersonList/PersonList';
+import PersonForm from './routes/PersonForm/PersonForm';
+import PersonList from './routes/PersonList/PersonList';
+import UIElements from './routes/UIElements/UIElements';
 import Navbar from './components/Navbar/Navbar';
-import UIElements from './roots/UIElements/UIElements';
 
 const App: React.FC = () => {
     return (
