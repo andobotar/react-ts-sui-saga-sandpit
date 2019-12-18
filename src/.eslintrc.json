@@ -1,0 +1,45 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "rules": {
+        "@typescript-eslint/interface-name-prefix": ["warn", { "prefixWithI": "always" }],
+        "eqeqeq": ["error", "always", {"null": "ignore"}],
+        "prefer-promise-reject-errors": "error",
+        "radix": "error", 
+        "prefer-template": "error",
+        "no-import-assign": "error",
+        "no-duplicate-imports": "error",
+        "react/jsx-filename-extension": 0,
+        // "quotes": ["error", "double"],
+        "@typescript-eslint/explicit-function-return-type": ["off", {
+            // if true, only functions which are part of a declaration will be checked
+            "allowExpressions": true,
+            // if true, type annotations are also allowed on the variable of a function expression rather than on the function directly
+            "allowTypedFunctionExpressions": true,
+            // if true, functions immediately returning another function expression will not be checked
+            "allowHigherOrderFunctions": true
+        }]
+    },
+    "settings": {
+    }
+}

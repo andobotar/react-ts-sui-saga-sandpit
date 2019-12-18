@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Button, Modal, Message, Icon } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Button, Modal, Alert, Icon } from 'antd';
 import BasicModal from '../../components/Modals/BasicModal/BasicModal';
 
 import classes from './UIElements.module.scss';
@@ -13,36 +13,34 @@ export default function UIElements() {
 
     return (
         <div className="content">
-            <Button primary onClick={() => setShowBasicModal(true)}>
-                basic modal
-            </Button>
-            <Button primary onClick={() => setShowBlurredModal(true)}>
-                blurred modal
-            </Button>
-            <Button primary onClick={() => setShowNoBackgroundModal(true)}>
-                no background modal
-            </Button>
-            <Button primary onClick={() => setShowNotification(true)} className={classes.notificationButton}>
+            <Button.Group>
+                <Button type="primary" onClick={() => setShowBasicModal(true)}>
+                    basic modal
+                </Button>
+                <Button type="primary" onClick={() => setShowBlurredModal(true)}>
+                    no footer modal
+                </Button>
+                <Button type="primary" onClick={() => setShowNoBackgroundModal(true)}>
+                    no background modal
+                </Button>
+            </Button.Group>
+            <Button type="primary" onClick={() => setShowNotification(true)} className={classes.notificationButton}>
                 notification
             </Button>
 
-            <Modal size="mini" open={showBasicModal} onClose={() => setShowBasicModal(false)} closeIcon>
+            <Modal visible={showBasicModal} cancelText="haggyámá" cancelButtonProps={{type: "danger"}} onCancel={() => setShowBasicModal(false)}>
                 <BasicModal onButtonClick={() => setShowBasicModal(false)} />
             </Modal>
-            <Modal size="mini" open={showBlurredModal} dimmer="blurring" onClose={() => setShowBlurredModal(false)}>
+            <Modal visible={showBlurredModal} footer={null} onCancel={() => setShowBlurredModal(false)}>
                 <BasicModal onButtonClick={() => setShowBlurredModal(false)} />
             </Modal>
-            <Modal basic size="mini" open={showNoBackgroundModal} onClose={() => setShowNoBackgroundModal(false)}>
+            <Modal visible={showNoBackgroundModal} onCancel={() => setShowNoBackgroundModal(false)}>
                 <BasicModal onButtonClick={() => setShowNoBackgroundModal(false)} />
             </Modal>
 
             {showNotification && (
-                <Message icon color="purple">
-                    <Icon name="close" link onClick={() => setShowNotification(false)} />
-                    Purple Notification
-                </Message>
+                <Alert closable showIcon icon={<Icon type="heart" theme="twoTone" twoToneColor="#f6af30" spin />} type="success" message="Success Notification" description="this is very good news. you should be happy." />
             )}
-            
         </div>
     );
 }

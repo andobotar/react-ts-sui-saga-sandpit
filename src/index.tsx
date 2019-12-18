@@ -9,7 +9,9 @@ import { personListReducer } from './store/reducers/personListReducer';
 import createSagaMiddleware from 'redux-saga';
 import { rootSaga } from './store/sagas/fetchPlanetName';
 
-import 'semantic-ui-css/semantic.min.css';
+import 'antd/dist/antd.css';
+import { ConfigProvider } from 'antd';
+import huHU from 'antd/es/locale/hu_HU';
 
 import './index.scss';
 import App from './App';
@@ -26,7 +28,9 @@ sagaMiddleware.run(rootSaga);
 const app = (
     <Provider store={store}>
         <BrowserRouter>
-            <App />
+            <ConfigProvider locale={huHU}>
+                <App />
+            </ConfigProvider>
         </BrowserRouter>
     </Provider>
 );

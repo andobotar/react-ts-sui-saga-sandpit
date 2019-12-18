@@ -2,7 +2,11 @@
 
 .notificationButton {
     width: 200px;
-    background-color: $badass !important;
-    color: magenta !important;
-    margin: 8px !important;
+    background-color: $badass;
+    color: magenta;
+    margin: 8px;
+
+    &:active, &:focus, &:hover {
+        background-color: $bad;
+    }
 }

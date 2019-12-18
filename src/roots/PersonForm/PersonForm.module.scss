@@ -1,7 +1,8 @@
 .field {
-    margin-bottom: 20px;
+    background-color: #f6f6ff;
+}
 
-    & > label {
-        font-weight: bold;
-    }
+.label > div > label {
+    font-weight: bold;
+    color: #a6a6a6;
 }
