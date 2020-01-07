@@ -4,15 +4,16 @@ import { useDispatch } from 'react-redux';
 import { Form, Input, Button, Icon } from 'antd';
 import * as Yup from 'yup';
 
-import { addPersonAction } from '../../store/actions/actions';
+import { addPersonAction } from '../../store/person-store/actions/actions';
 
 import classes from './PersonForm.module.scss';
-import { Person } from '../../models/person';
+import { IPerson } from '../../models/person';
 
-export default function PersonForm() {
+const PersonForm: React.FC = () => {
+    
     const dispatch = useDispatch();
 
-    const handleSubmit = (values: Person, { resetForm }: { resetForm: Function }) => {
+    const handleSubmit = (values: IPerson, { resetForm }: { resetForm: Function }) => {
         dispatch(addPersonAction(values));
         resetForm();
     };
@@ -81,3 +82,5 @@ export default function PersonForm() {
         </div>
     );
 }
+
+export default React.memo(PersonForm);

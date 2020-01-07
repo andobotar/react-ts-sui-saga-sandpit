@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import './App.scss';
-import PersonForm from './routes/PersonForm/PersonForm';
-import PersonList from './routes/PersonList/PersonList';
-import UIElements from './routes/UIElements/UIElements';
-import Navbar from './components/Navbar/Navbar';
+import PersonForm from './routes/person-form';
+import PersonList from './routes/person-list';
+import UIElements from './routes/ui-elements';
+import Navbar from './components/navbar/Navbar';
 
 const App: React.FC = () => {
     return (

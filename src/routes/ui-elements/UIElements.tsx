@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { Button, Modal, Alert, Icon } from 'antd';
-import BasicModal from '../../components/Modals/BasicModal/BasicModal';
+import BasicModal from '../../components/modals/basic-modal';
 
 import classes from './UIElements.module.scss';
 
-export default function UIElements() {
+ const UIElements: React.FC = () => {
 
     const [showBasicModal, setShowBasicModal] = useState<boolean>(false);
     const [showBlurredModal, setShowBlurredModal] = useState<boolean>(false);
-    const [showNoBackgroundModal, setShowNoBackgroundModal] = useState<boolean>(false);
+    const [showThirdModal, setShowThirdModal] = useState<boolean>(false);
     const [showNotification, setShowNotification] = useState<boolean>(false);
 
     return (
         <div className="content">
-            <Button.Group>
+            <Button.Group className={classes['ant-btn-group']}>
                 <Button type="primary" onClick={() => setShowBasicModal(true)}>
                     basic modal
                 </Button>
                 <Button type="primary" onClick={() => setShowBlurredModal(true)}>
                     no footer modal
                 </Button>
-                <Button type="primary" onClick={() => setShowNoBackgroundModal(true)}>
-                    no background modal
+                <Button type="primary" onClick={() => setShowThirdModal(true)}>
+                    third modal
                 </Button>
             </Button.Group>
             <Button type="primary" onClick={() => setShowNotification(true)} className={classes.notificationButton}>
@@ -34,8 +34,8 @@ export default function UIElements() {
             <Modal visible={showBlurredModal} footer={null} onCancel={() => setShowBlurredModal(false)}>
                 <BasicModal onButtonClick={() => setShowBlurredModal(false)} />
             </Modal>
-            <Modal visible={showNoBackgroundModal} onCancel={() => setShowNoBackgroundModal(false)}>
-                <BasicModal onButtonClick={() => setShowNoBackgroundModal(false)} />
+            <Modal visible={showThirdModal} onCancel={() => setShowThirdModal(false)}>
+                <BasicModal onButtonClick={() => setShowThirdModal(false)} />
             </Modal>
 
             {showNotification && (
@@ -44,3 +44,5 @@ export default function UIElements() {
         </div>
     );
 }
+
+export default React.memo(UIElements);

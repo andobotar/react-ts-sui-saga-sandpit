@@ -5,9 +5,9 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { personListReducer } from './store/reducers/personListReducer';
+import { personListReducer } from './store/person-store/reducers/personListReducer';
 import createSagaMiddleware from 'redux-saga';
-import { rootSaga } from './store/sagas/fetchPlanetName';
+import { rootSaga } from './store/person-store/sagas/fetchPlanetName';
 
 import 'antd/dist/antd.css';
 import { ConfigProvider } from 'antd';

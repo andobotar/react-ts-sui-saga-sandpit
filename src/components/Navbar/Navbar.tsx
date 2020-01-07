@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import classes from './Navbar.module.scss';
 
-export default function Navbar() {
+const Navbar: React.FC = () => {
     return (
         <nav className={classes.navbar}>
             <div className={classes.navItem}>
@@ -24,3 +24,5 @@ export default function Navbar() {
         </nav>
     );
 }
+
+export default React.memo(Navbar);

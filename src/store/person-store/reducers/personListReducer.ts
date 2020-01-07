@@ -1,7 +1,7 @@
-import { Person } from '../../models/person';
+import { IPerson } from '../../../models/person';
 import * as actionTypes from '../actions/actions';
 
-const initialState: { people: Array<Person> } = {
+const initialState: { people: Array<IPerson> } = {
     people: [
         { name: '1kutya', email: 'bundas@freemail.hu', planet: 'Plútó' },
         { name: '2cica', email: 'cirmi@vipmail.hu', planet: 'Youranus' },
@@ -18,7 +18,7 @@ const initialState: { people: Array<Person> } = {
     ]
 };
 
-export const personListReducer = (state: {people: Array<Person>} = initialState, action: {type: string, payload: Person}): any => {
+export const personListReducer = (state: {people: Array<IPerson>} = initialState, action: {type: string; payload: IPerson}): {people: Array<IPerson>} => {
     switch(action.type) {
         case actionTypes.ADD_PERSON:
             return {...state, people: state.people.concat(action.payload)}
