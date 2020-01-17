@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 
 import { BrowserRouter } from 'react-router-dom';
 
-import { createStore, applyMiddleware } from 'redux';
+import { combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { personListReducer } from './store/person-store/reducers/personListReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import { personListReducer } from './store/person/personSlice';
 import createSagaMiddleware from 'redux-saga';
-import { rootSaga } from './store/person-store/sagas/fetchPlanetName';
+import { rootSaga } from './store/person/fetchPlanetNameSaga';
 
+// ant design
 import 'antd/dist/antd.css';
 import { ConfigProvider } from 'antd';
 import huHU from 'antd/es/locale/hu_HU';
@@ -20,8 +22,16 @@ import * as serviceWorker from './serviceWorker';
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
+const rootReducer = combineReducers({ personList: personListReducer });
+
 // mount it on the Store
-const store = createStore(personListReducer, applyMiddleware(sagaMiddleware));
+const store = configureStore({
+    reducer: rootReducer,
+    middleware: [sagaMiddleware],
+    // devTools: process.env.REACT_APP_PRODUCTION === 'false'
+});
+
+// export type StoreState = ReturnType<typeof rootReducer>;
 
 sagaMiddleware.run(rootSaga);
 

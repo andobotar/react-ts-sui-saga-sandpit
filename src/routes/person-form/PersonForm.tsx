@@ -4,17 +4,16 @@ import { useDispatch } from 'react-redux';
 import { Form, Input, Button, Icon } from 'antd';
 import * as Yup from 'yup';
 
-import { addPersonAction } from '../../store/person-store/actions/actions';
+import { addPersonAsync } from '../../store/person/personSlice';
 
 import classes from './PersonForm.module.scss';
 import { IPerson } from '../../models/person';
 
 const PersonForm: React.FC = () => {
-    
     const dispatch = useDispatch();
 
     const handleSubmit = (values: IPerson, { resetForm }: { resetForm: Function }) => {
-        dispatch(addPersonAction(values));
+        dispatch(addPersonAsync(values));
         resetForm();
     };
 
@@ -30,11 +29,7 @@ const PersonForm: React.FC = () => {
 
     return (
         <div className={'content'}>
-            <Formik
-                initialValues={{ name: '', email: '', planet: '' }}
-                onSubmit={handleSubmit}
-                validationSchema={validationSchema}
-            >
+            <Formik initialValues={{ name: '', email: '', planet: '' }} onSubmit={handleSubmit} validationSchema={validationSchema}>
                 {({ values, handleChange, handleSubmit, errors, touched }) => (
                     <Form onSubmit={handleSubmit}>
                         <Form.Item
@@ -81,6 +76,6 @@ const PersonForm: React.FC = () => {
             </Formik>
         </div>
     );
-}
+};
 
 export default React.memo(PersonForm);

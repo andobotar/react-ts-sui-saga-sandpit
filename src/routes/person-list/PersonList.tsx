@@ -6,7 +6,9 @@ import { IPerson } from '../../models/person';
 
  const PersonList: React.FC = () => {
     
-    const people = useSelector((state: {people: Array<IPerson>}) => state.people); // get 'people' from the redux store
+    const people = useSelector((state: { personList: { people: Array<IPerson> } }) => state.personList.people); // get 'people' from the redux store
+
+    console.log('people', people)
 
     const columns = [
         {title: 'Name', dataIndex: 'name'},

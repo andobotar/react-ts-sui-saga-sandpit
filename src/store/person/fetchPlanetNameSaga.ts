@@ -1,7 +1,7 @@
-import { put, all, call, takeLeading } from 'redux-saga/effects';
+import { put, all, call, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-import * as actionTypes from '../actions/actions';
+import { addPerson, addPersonAsync } from './personSlice';
 
 // worker
 export function* fetchPlanetNameSaga(action: any) {
@@ -10,7 +10,7 @@ export function* fetchPlanetNameSaga(action: any) {
         const response = yield axios.get('https://swapi.co/api/planets/');
         const random = Math.floor(Math.random() * 10);
         const planetName = response.data.results[random].name;
-        yield put({type: actionTypes.ADD_PERSON, payload: {...action.payload, planet: planetName}})
+        yield put({type: addPerson, payload: {...action.payload, planet: planetName}})
     } catch (error) {
         console.warn(error)
     }
@@ -18,7 +18,7 @@ export function* fetchPlanetNameSaga(action: any) {
 
 // watcher
 export function* watchFetchPlanetName() {
-    yield takeLeading(actionTypes.addPersonAction, fetchPlanetNameSaga);
+    yield takeEvery(addPersonAsync, fetchPlanetNameSaga);
 }
 
 // root
